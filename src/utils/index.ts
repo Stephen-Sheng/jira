@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const isFalsy = (value: any) => (value === 0 ? false : !value);
+export const isFalsy = (value: unknown) => (value === 0 ? false : !value);
 export const cleanObject = (obj: Object) => {
   let result = { ...obj };
   Reflect.ownKeys(result).forEach((key) => {
@@ -16,10 +16,11 @@ export const cleanObject = (obj: Object) => {
 export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
-  }, []);
+  }, [callback]);
 };
 
-export const useDebounce = (value: any, delay?: number) => {
+// 泛型
+export const useDebounce = (value: unknown, delay?: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedValue(value), delay);

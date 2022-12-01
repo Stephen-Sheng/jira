@@ -20,7 +20,7 @@ export const useMount = (callback: () => void) => {
 };
 
 // 泛型
-export const useDebounce = (value: unknown, delay?: number) => {
+export const useDebounce = <V>(value: V, delay?: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedValue(value), delay);

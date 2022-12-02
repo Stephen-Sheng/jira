@@ -1,7 +1,4 @@
-import qs from "qs";
-import React, { FormEvent, FormEventHandler } from "react";
-import { cleanObject } from "utils";
-
+import React, { FormEvent } from "react";
 const apiUrl = process.env.REACT_APP_API_URL;
 export const LoginScreen = () => {
   const login = (param: { username: string; password: string }) => {

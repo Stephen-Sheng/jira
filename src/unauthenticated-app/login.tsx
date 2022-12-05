@@ -1,5 +1,5 @@
 import { useAuth } from "context/auth-context";
-import React, { FormEvent } from "react";
+import React from "react";
 import { Form, Input, Button } from "antd";
 export const LoginScreen = () => {
   const { login } = useAuth();

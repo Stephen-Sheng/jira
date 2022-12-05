@@ -39,6 +39,8 @@ export const http = async (
 
 export const useHttp = () => {
   const { user } = useAuth();
+  // Utility Types
+  // 这个typeof是静态的，与JS中不一样
   return (...[endpoint, config]: Parameters<typeof http>) =>
     http(endpoint, { ...config, token: user?.token });
 };

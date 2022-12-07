@@ -1,6 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import { jsx } from "@emotion/react";
-import styled from "@emotion/styled";
 import { Input, Select, Form } from "antd";
 type SearchPanelProps = {
   param: {

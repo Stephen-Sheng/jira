@@ -7,10 +7,8 @@ import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";
 import { Dropdown, Menu, Button } from "antd";
 export const AuthenticatedApp = () => {
   const { user, logout } = useAuth();
-  const value: any = undefined;
   return (
     <Container>
-      {value.notExist}
       <Header between={true}>
         <HeaderLeft gap={true}>
           <SoftwareLogo width={"18rem"} color={"rgb(38,132,255)"} />

@@ -6,6 +6,7 @@ import { useDebounce } from "utils";
 import { Typography } from "antd";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
+import { useDocumentTitle } from "utils";
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -15,6 +16,7 @@ export const ProjectListScreen = () => {
   const debouncedParam = useDebounce(param, 500);
   const { isLoading, error, data: list } = useProjects(debouncedParam);
   const { data: users } = useUsers();
+  useDocumentTitle("项目列表", false);
 
   return (
     <Container>

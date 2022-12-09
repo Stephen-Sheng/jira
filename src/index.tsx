@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./wdyr.ts";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadServer, DevTools } from "jira-dev-tool";

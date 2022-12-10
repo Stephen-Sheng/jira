@@ -6,14 +6,14 @@ import { Typography } from "antd";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
 import { useDocumentTitle } from "utils";
-import { useUrlQueryParam } from "utils/url";
+import { useProjectSearchParams } from "./util";
 
 export const ProjectListScreen = () => {
-  const [param, setParam] = useUrlQueryParam(["name", "personId"]);
-  const debouncedParam = useDebounce(param, 500);
-  const { isLoading, error, data: list } = useProjects(debouncedParam);
-  const { data: users } = useUsers();
   useDocumentTitle("项目列表", false);
+
+  const [param, setParam] = useProjectSearchParams();
+  const { isLoading, error, data: list } = useProjects(useDebounce(param, 200));
+  const { data: users } = useUsers();
 
   return (
     <Container>
@@ -26,7 +26,7 @@ export const ProjectListScreen = () => {
     </Container>
   );
 };
-// ProjectListScreen.whyDidYouRender = true
+ProjectListScreen.whyDidYouRender = true;
 const Container = styled.div`
   padding: 3.2rem;
 `;

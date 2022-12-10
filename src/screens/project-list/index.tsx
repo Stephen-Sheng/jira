@@ -12,21 +12,32 @@ export const ProjectListScreen = () => {
   useDocumentTitle("项目列表", false);
 
   const [param, setParam] = useProjectSearchParams();
-  const { isLoading, error, data: list } = useProjects(useDebounce(param, 200));
+  const {
+    isLoading,
+    error,
+    data: list,
+    retry,
+  } = useProjects(useDebounce(param, 200));
   const { data: users } = useUsers();
 
   return (
     <Container>
       <h1>项目列表</h1>
+      {/* <Button onClick={retry}>retry</Button> */}
       <SearchPanel param={param} setParam={setParam} users={users || []} />
       {error ? (
         <Typography.Text type="danger">{error.message}</Typography.Text>
       ) : null}
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
+      <List
+        refresh={retry}
+        loading={isLoading}
+        dataSource={list || []}
+        users={users || []}
+      />
     </Container>
   );
 };
-ProjectListScreen.whyDidYouRender = true;
+// ProjectListScreen.whyDidYouRender = true;
 const Container = styled.div`
   padding: 3.2rem;
 `;

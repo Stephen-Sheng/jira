@@ -1,6 +1,7 @@
 import qs from "qs";
 import * as auth from "auth-provider";
 import { useAuth } from "context/auth-context";
+import { useCallback } from "react";
 
 interface Config extends RequestInit {
   token?: string;
@@ -41,6 +42,9 @@ export const useHttp = () => {
   const { user } = useAuth();
   // Utility Types
   // 这个typeof是静态的，与JS中不一样
-  return (...[endpoint, config]: Parameters<typeof http>) =>
-    http(endpoint, { ...config, token: user?.token });
+  return useCallback(
+    (...[endpoint, config]: Parameters<typeof http>) =>
+      http(endpoint, { ...config, token: user?.token }),
+    [user?.token]
+  );
 };

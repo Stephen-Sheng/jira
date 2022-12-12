@@ -37,11 +37,20 @@ export const useAsync = <D>(
 ) => {
   const config = { ...defaultConfig, initialConfig };
   // 这样就会正常
+  // const [state, dispatch] = useReducer(
+  //   (state: State<D>, action: Partial<State<D>>) => ({
+  //     ...state,
+  //     ...action,
+  //   }),
+  //   {
+  //     ...defaultInitialState,
+  //     ...initialState,
+  //   }
+  // );
+
+  //为什么这样写就可以了呢
   const [state, dispatch] = useReducer(
-    (state: State<D>, action: Partial<State<D>>) => ({
-      ...state,
-      ...action,
-    }),
+    (state: State<D>, action: Partial<State<D>>) => asyncReducer(state, action),
     {
       ...defaultInitialState,
       ...initialState,

@@ -12,31 +12,72 @@ import { resetRoute } from "utils";
 import { ProjectModal } from "screens/project-list/projectModal";
 import { ProjectPopover } from "components/project-popover";
 export const AuthenticatedApp = () => {
+  const [projectModalOpen, setProjectModalOpen] = useState(false);
   return (
     <Container>
-      <PageHeader />
+      <PageHeader
+        projectButton={
+          <ButtonNoPadding
+            type="link"
+            onClick={() => setProjectModalOpen(true)}
+          >
+            创建项目
+          </ButtonNoPadding>
+        }
+      />
       <Main>
         <Router>
           <Routes>
-            <Route path="/projects" element={<ProjectListScreen />} />
+            <Route
+              path="/projects"
+              element={
+                <ProjectListScreen
+                  projectButton={
+                    <ButtonNoPadding
+                      type="link"
+                      onClick={() => setProjectModalOpen(true)}
+                    >
+                      创建项目
+                    </ButtonNoPadding>
+                  }
+                />
+              }
+            />
             <Route path="/projects/:projectId/*" element={<ProjectScreen />} />
-            <Route index element={<ProjectListScreen />} />
+            <Route
+              index
+              element={
+                <ProjectListScreen
+                  projectButton={
+                    <ButtonNoPadding
+                      type="link"
+                      onClick={() => setProjectModalOpen(true)}
+                    >
+                      创建项目
+                    </ButtonNoPadding>
+                  }
+                />
+              }
+            />
           </Routes>
         </Router>
       </Main>
-      <ProjectModal />
+      <ProjectModal
+        projectModalOpen={projectModalOpen}
+        onClose={() => setProjectModalOpen(false)}
+      />
     </Container>
   );
 };
 
-const PageHeader = () => {
+const PageHeader = (props: { projectButton: JSX.Element }) => {
   return (
     <Header between={true}>
       <HeaderLeft gap={true}>
         <ButtonNoPadding type={"link"} onClick={resetRoute}>
           <SoftwareLogo width={"18rem"} color={"rgb(38,132,255)"} />
         </ButtonNoPadding>
-        <ProjectPopover />
+        <ProjectPopover {...props} />
         <span>用户</span>
       </HeaderLeft>
       <HeaderRight>

@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { useAuth } from "context/auth-context";
-import React, { useState } from "react";
 import { ButtonNoPadding, Row } from "components/lib";
 import { ProjectListScreen } from "screens/project-list";
 import { ReactComponent as SoftwareLogo } from "assets/software-logo.svg";

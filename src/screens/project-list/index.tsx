@@ -9,7 +9,7 @@ import { useDocumentTitle } from "utils";
 import { useProjectSearchParams } from "./util";
 import { ButtonNoPadding, Row } from "components/lib";
 import { useDispatch } from "react-redux";
-import { projectListActions, projectListSlice } from "./project-list.slice";
+import { projectListActions } from "./project-list.slice";
 
 export const ProjectListScreen = () => {
   useDocumentTitle("项目列表", false);

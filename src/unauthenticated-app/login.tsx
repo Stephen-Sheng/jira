@@ -10,6 +10,7 @@ export const LoginScreen = ({
 }) => {
   const { login } = useAuth();
   const { run, isLoading } = useAsync(undefined, { throwOnError: true });
+
   const handleSubmit = async (values: {
     username: string;
     password: string;

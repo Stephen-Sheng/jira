@@ -14,7 +14,6 @@ import { useProjectModal } from "./util";
 // };
 interface ListProps extends TableProps<Project> {
   users: User[];
-  refresh?: () => void;
 }
 export type Project = {
   id: number;
@@ -28,8 +27,7 @@ export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
   const { open } = useProjectModal();
   // curry
-  const pinProject = (id: number) => (pin: boolean) =>
-    mutate({ id, pin }).then(props.refresh);
+  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
   return (
     <Table
       rowKey={"id"}

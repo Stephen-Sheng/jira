@@ -25,9 +25,11 @@ export type Project = {
 };
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
-  const { open } = useProjectModal();
+  const { startEdit } = useProjectModal();
   // curry
   const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
+  const editProject = (id: number) => () => startEdit(id);
+
   return (
     <Table
       rowKey={"id"}
@@ -89,9 +91,15 @@ export const List = ({ users, ...props }: ListProps) => {
                 overlay={
                   <Menu>
                     <Menu.Item key={"edit"}>
-                      <ButtonNoPadding onClick={open} type={"link"}>
+                      <ButtonNoPadding
+                        onClick={editProject(project.id)}
+                        type={"link"}
+                      >
                         编辑
                       </ButtonNoPadding>
+                    </Menu.Item>
+                    <Menu.Item key={"delete"}>
+                      <ButtonNoPadding type={"link"}>删除</ButtonNoPadding>
                     </Menu.Item>
                   </Menu>
                 }

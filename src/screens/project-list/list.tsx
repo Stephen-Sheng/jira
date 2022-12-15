@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 import { Pin } from "components/pin";
 import { useDeleteProject, useEditProject } from "utils/project";
 import { ButtonNoPadding } from "components/lib";
-import { useProjectModal, useProjectQueryKey } from "./util";
+import {
+  usePinProjectQueryKey,
+  useProjectModal,
+  useProjectQueryKey,
+} from "./util";
 
 interface ListProps extends TableProps<Project> {
   users: User[];
@@ -20,7 +24,7 @@ export type Project = {
   created: number;
 };
 export const List = ({ users, ...props }: ListProps) => {
-  const { mutate } = useEditProject(useProjectQueryKey());
+  const { mutate } = useEditProject(usePinProjectQueryKey());
   // curry
   const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
 

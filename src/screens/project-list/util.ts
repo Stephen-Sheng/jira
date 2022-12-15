@@ -1,6 +1,7 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useProject } from "utils/project";
 import { useSetUrlSearchParam, useUrlQueryParam } from "utils/url";
+import { Project } from "./list";
 
 export const useProjectSearchParams = () => {
   const [param, setParam] = useUrlQueryParam(
@@ -18,6 +19,10 @@ export const useProjectSearchParams = () => {
 export const useProjectQueryKey = () => {
   const [params] = useProjectSearchParams();
   return ["projects", params];
+};
+
+export const usePinProjectQueryKey = () => {
+  return "projects";
 };
 
 export const useProjectModal = () => {

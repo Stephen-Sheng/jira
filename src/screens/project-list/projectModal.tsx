@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Drawer, Button, Spin, Form, Input } from "antd";
 import { useForm } from "antd/es/form/Form";
-import { useProjectModal } from "./util";
+import { useProjectModal, useProjectQueryKey } from "./util";
 import { UserSelect } from "components/user-select";
 import { useAddProject, useEditProject } from "utils/project";
 import { ErrorBox } from "components/lib";
@@ -13,7 +13,11 @@ export const ProjectModal = () => {
   const title = editingProject ? "编辑项目" : "创建项目";
 
   const useMutateProject = editingProject ? useEditProject : useAddProject;
-  const { mutateAsync, error, isLoading: mutateLoading } = useMutateProject();
+  const {
+    mutateAsync,
+    error,
+    isLoading: mutateLoading,
+  } = useMutateProject(useProjectQueryKey());
   const [form] = useForm();
   const onFinish = (values: any) => {
     mutateAsync({ ...editingProject, ...values }).then(() => {

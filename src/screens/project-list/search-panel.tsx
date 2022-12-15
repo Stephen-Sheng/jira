@@ -1,20 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import { Input, Form } from "antd";
 import { UserSelect } from "components/user-select";
-import { Project } from "./list";
+import { Project, User } from "types";
 type SearchPanelProps = {
   param: Partial<Pick<Project, "name" | "personId">>;
   setParam: (param: SearchPanelProps["param"]) => void;
   users: User[];
 };
-export type User = {
-  token: string;
-  id: number;
-  name: string;
-  email: string;
-  title: string;
-  organization: string;
-};
+
 export const SearchPanel = ({ param, setParam, users }: SearchPanelProps) => {
   return (
     <Form css={{ marginBottom: "2rem" }} layout="inline">

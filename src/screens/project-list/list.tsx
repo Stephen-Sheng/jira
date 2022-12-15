@@ -1,4 +1,4 @@
-import { User } from "./search-panel";
+import { User } from "types";
 import { Table, Dropdown, Menu, Modal } from "antd";
 import dayjs from "dayjs";
 import { TableProps } from "antd/es/table";
@@ -11,18 +11,12 @@ import {
   useProjectModal,
   useProjectQueryKey,
 } from "./util";
+import { Project } from "types";
 
 interface ListProps extends TableProps<Project> {
   users: User[];
 }
-export type Project = {
-  id: number;
-  name: string;
-  personId: number;
-  pin: boolean;
-  organization: string;
-  created: number;
-};
+
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject(usePinProjectQueryKey());
   // curry

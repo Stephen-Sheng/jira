@@ -41,7 +41,7 @@ const ImgIcon = styled.img`
   height: 1.5rem;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   min-width: 27rem;
   border-radius: 6px;
   background-color: rgb(244, 245, 247);

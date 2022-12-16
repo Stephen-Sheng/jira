@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import { KanbanScreen } from "screens/kanban";
 import { EpicScreen } from "screens/epic";
-import { ScreenContainer } from "components/lib";
 import styled from "@emotion/styled";
 import { Menu } from "antd";
 
@@ -44,6 +43,7 @@ const Aside = styled.aside`
 const Main = styled.div`
   box-shadow: -5px 0 5px -5px rgba(0, 0, 0, 0.1);
   display: flex;
+  overflow: hidden;
 `;
 
 const Container = styled.div`

@@ -2,7 +2,11 @@ import { Task } from "./../types/task";
 import { useQuery } from "react-query";
 import { useHttp } from "./http";
 import { QueryKey, useMutation } from "react-query";
-import { useAddConfig, useEditConfig } from "./use-optimistic-options";
+import {
+  useAddConfig,
+  useDeleteConfig,
+  useEditConfig,
+} from "./use-optimistic-options";
 import { useDebounce } from "utils";
 
 export const useTasks = (param?: Partial<Task>) => {
@@ -42,5 +46,17 @@ export const useEditTask = (queryKey: QueryKey) => {
         data: params,
       }),
     useEditConfig(queryKey)
+  );
+};
+
+export const useDeleteTask = (queryKey: QueryKey) => {
+  const client = useHttp();
+
+  return useMutation(
+    ({ id }: { id: number }) =>
+      client(`tasks/${id}`, {
+        method: "DELETE",
+      }),
+    useDeleteConfig(queryKey)
   );
 };

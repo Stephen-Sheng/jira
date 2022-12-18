@@ -9,7 +9,7 @@ import { Route, Routes } from "react-router";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ProjectScreen } from "screens/project";
 import { resetRoute } from "utils";
-import { ProjectModal } from "screens/project-list/projectModal";
+import { ProjectModal } from "screens/project-list/project-modal";
 import { ProjectPopover } from "components/project-popover";
 export const AuthenticatedApp = () => {
   return (

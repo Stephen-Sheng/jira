@@ -1,3 +1,4 @@
+import React from "react";
 import { List } from "./list";
 import styled from "@emotion/styled";
 import { SearchPanel } from "./search-panel";

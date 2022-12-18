@@ -1,15 +1,10 @@
 import { User } from "types";
 import { useHttp } from "./http";
-import { cleanObject } from "utils";
-import { useEffect } from "react";
-import { useAsync } from "./use-async";
+import { useQuery } from "react-query";
+
 export const useUsers = (param?: Partial<User>) => {
-  const { run, ...result } = useAsync<User[]>();
   const client = useHttp();
-
-  useEffect(() => {
-    run(client("users", { data: cleanObject(param || {}) }));
-  }, [param, client, run]);
-
-  return result;
+  return useQuery<User[]>(["users", param], () =>
+    client("users", { data: param })
+  );
 };

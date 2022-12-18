@@ -5,6 +5,7 @@ import { useTaskModal, useTasksQueryKey } from "./util";
 import { Modal, Form, Input, Button } from "antd";
 import { UserSelect } from "components/user-select";
 import { TaskTypeSelect } from "components/task-type-select";
+import React from "react";
 
 const layout = {
   labelCol: { span: 8 },
@@ -50,7 +51,7 @@ export const TaskModal = () => {
       cancelText={"取消"}
       confirmLoading={editLoading}
       title={"编辑任务"}
-      open={!!editingTaskId}
+      visible={!!editingTaskId}
       onCancel={onCancel}
       onOk={onOk}
     >

@@ -70,6 +70,7 @@
     "@types/react-beautiful-dnd": "^13.0.0",
     "@types/react-helmet": "^6.1.0",
     "eslint-config-prettier": "^6.15.0",
+    "gh-pages": "^4.0.0",
     "husky": ">=6",
     "json-server": "^0.16.2",
     "lint-staged": ">=10",

@@ -8,6 +8,7 @@ import { useUsers } from "utils/user";
 import { useDocumentTitle } from "utils";
 import { useProjectModal, useProjectSearchParams } from "./util";
 import { ButtonNoPadding, ErrorBox, Row } from "components/lib";
+import { Profiler } from "components/profiler";
 
 export const ProjectListScreen = () => {
   useDocumentTitle("项目列表", false);
@@ -18,18 +19,20 @@ export const ProjectListScreen = () => {
   const { data: users } = useUsers();
 
   return (
-    <Container>
-      <Row between>
-        <h1>项目列表</h1>
-        <ButtonNoPadding onClick={open} type={"link"}>
-          创建项目
-        </ButtonNoPadding>
-      </Row>
-      {/* <Button onClick={retry}>retry</Button> */}
-      <SearchPanel param={param} setParam={setParam} users={users || []} />
-      <ErrorBox error={error} />
-      <List loading={isLoading} dataSource={list || []} users={users || []} />
-    </Container>
+    <Profiler id="项目列表">
+      <Container>
+        <Row between>
+          <h1>项目列表</h1>
+          <ButtonNoPadding onClick={open} type={"link"}>
+            创建项目
+          </ButtonNoPadding>
+        </Row>
+        {/* <Button onClick={retry}>retry</Button> */}
+        <SearchPanel param={param} setParam={setParam} users={users || []} />
+        <ErrorBox error={error} />
+        <List loading={isLoading} dataSource={list || []} users={users || []} />
+      </Container>
+    </Profiler>
   );
 };
 // ProjectListScreen.whyDidYouRender = true;

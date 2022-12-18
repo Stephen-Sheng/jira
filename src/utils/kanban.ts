@@ -5,7 +5,7 @@ import { QueryKey, useMutation } from "react-query";
 import {
   useAddConfig,
   useDeleteConfig,
-  useReorderConfig,
+  useReorderKanbanConfig,
 } from "./use-optimistic-options";
 
 export const useKanbans = (param?: Partial<Kanban>) => {
@@ -53,5 +53,5 @@ export const useReorderKanban = (queryKey: QueryKey) => {
       data: params,
       method: "POST",
     });
-  }, useReorderConfig(queryKey));
+  }, useReorderKanbanConfig(queryKey));
 };

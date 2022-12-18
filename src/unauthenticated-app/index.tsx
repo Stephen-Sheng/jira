@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { LoginScreen } from "./login";
 import { RegisterScreen } from "./register";
@@ -9,7 +10,7 @@ import right from "assets/right.svg";
 import { useDocumentTitle } from "utils";
 import { ErrorBox } from "components/lib";
 
-export const UnauthenticatedApp = () => {
+export default () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   useDocumentTitle("请登录注册以继续", false);
